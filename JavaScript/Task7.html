@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Train Animation</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+      #train {
+        position: relative;
+        left: 0;
+        width: 250px; /* Adjust based on your image */
+      }
+      h2 {
+        color: darkblue;
+        font-size: 22px;
+        font-weight: bold;
+      }
+      button {
+        padding: 8px 15px;
+        font-size: 16px;
+        margin: 5px;
+        border: 1px solid gray;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: lightgray;
+      }
+    </style>
+    <script>
+      let train,
+        position = 0,
+        animation;
+
+      function startAnimation() {
+        train = document.getElementById("train");
+        if (!animation) {
+          animation = setInterval(moveTrain, 10);
+        }
+      }
+
+      function moveTrain() {
+        if (position >= window.innerWidth - 300) {
+          // Adjust based on image size
+          position = 0; // Reset to start position
+        } else {
+          position += 2; // Move the train right
+        }
+        train.style.left = position + "px";
+      }
+
+      function stopAnimation() {
+        clearInterval(animation);
+        animation = null;
+      }
+    </script>
+  </head>
+  <body>
+    <img
+      id="train"
+      src="https://thumbs.dreamstime.com/b/freight-diesel-locomotive-red-train-powerful-equipment-moving-train-composition-carriages-flat-cartoon-vector-illustration-200076098.jpg"
+      alt="Train Animation"
+    />
+
+    <h2>Click the following buttons to handle animation</h2>
+
+    <button onclick="startAnimation()">Start</button>
+    <button onclick="stopAnimation()">Stop</button>
+  </body>
+</html>

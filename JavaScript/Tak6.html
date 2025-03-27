@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Login</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f8f8f8;
+      }
+      .login-container {
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 320px;
+      }
+      .login-container h2 {
+        font-family: "Brush Script MT", cursive;
+        font-size: 30px;
+      }
+      .input-field {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        background: #f9f9f9;
+      }
+      .input-field input {
+        border: none;
+        background: transparent;
+        outline: none;
+        width: 100%;
+        padding-left: 10px;
+      }
+      .input-field i {
+        padding: 5px;
+        color: gray;
+      }
+      .login-btn {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background: #0095f6;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+      .login-btn:hover {
+        background: #0078d4;
+      }
+      .remember-me {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+      .remember-me input {
+        margin-right: 5px;
+      }
+      .forgot-password a {
+        color: #0095f6;
+        text-decoration: none;
+      }
+      .forgot-password a:hover {
+        text-decoration: underline;
+      }
+      .signup {
+        margin-top: 15px;
+        font-size: 14px;
+      }
+      .signup a {
+        color: #0095f6;
+        text-decoration: none;
+      }
+      .signup a:hover {
+        text-decoration: underline;
+      }
+      .error {
+        color: red;
+        font-size: 12px;
+        text-align: left;
+      }
+    </style>
+    <script>
+      function validateLogin(event) {
+        event.preventDefault();
+
+        let username = document.getElementById("username");
+        let password = document.getElementById("password");
+        let usernameError = document.getElementById("usernameError");
+        let passwordError = document.getElementById("passwordError");
+
+        // Reset error messages
+        usernameError.innerHTML = "";
+        passwordError.innerHTML = "";
+
+        let isValid = true;
+
+        if (username.value.trim() === "") {
+          usernameError.innerHTML = "Username is required";
+          isValid = false;
+        }
+
+        if (password.value.trim() === "") {
+          passwordError.innerHTML = "Password is required";
+          isValid = false;
+        }
+
+        if (isValid) {
+          alert("Login Successful!");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Instagram</h2>
+
+      <form onsubmit="validateLogin(event)">
+        <div class="input-field">
+          <i>👤</i>
+          <input type="text" id="username" placeholder="Username" />
+        </div>
+        <span id="usernameError" class="error"></span>
+
+        <div class="input-field">
+          <i>🔒</i>
+          <input type="password" id="password" placeholder="Password" />
+        </div>
+        <span id="passwordError" class="error"></span>
+
+        <button type="submit" class="login-btn">Log in</button>
+
+        <div class="remember-me">
+          <label><input type="checkbox" /> Remember me</label>
+          <div class="forgot-password"><a href="#">Forgot Password?</a></div>
+        </div>
+
+        <div class="signup">
+          Don't have an account? <a href="#">Sign up here.</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
